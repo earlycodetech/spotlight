@@ -1,0 +1,31 @@
+/* Home */
+
+/* About */
+
+/* Categories */
+
+/* Lbrary */
+.hero_general {
+    height: var(--height);
+    background-image: var(--image);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    color: #ffffff;
+}
+
+.hero_general .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #0000007d;
+}
+
+
+/* Contact */

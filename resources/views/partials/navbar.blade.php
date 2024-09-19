@@ -17,22 +17,22 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('home.page') }}" class="nav-link">
+                    <a href="{{ route('about.page') }}" class="nav-link {{ request()->is('about') ? 'active' : '' }}">
                         About
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('home.page') }}" class="nav-link">
+                    <a href="{{ route('categories.page') }}" class="nav-link {{ request()->is('categories') ? 'active' : '' }}">
                         Categories
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('home.page') }}" class="nav-link">
+                    <a href="{{ route('library.page') }}" class="nav-link {{ request()->is('library') ? 'active' : '' }}">
                         Library
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('home.page') }}" class="nav-link">
+                    <a href="{{ route('contact.page') }}" class="nav-link {{ request()->is('contact') ? 'active' : '' }}">
                         Contact
                     </a>
                 </li>

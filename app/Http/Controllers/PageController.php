@@ -12,4 +12,14 @@ class PageController extends Controller
     public function aboutPage() {
         return view('pages.about');
     }
+    public function categoriesPage() {
+        return view('pages.categories');
+    }
+    public function libraryPage() {
+        $title = "Our Vast Library - Spotlight";
+        return view('pages.library', compact('title'));
+    }
+    public function contactPage() {
+        return view('pages.contact');
+    }
 }
