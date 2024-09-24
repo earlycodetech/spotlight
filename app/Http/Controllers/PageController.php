@@ -10,16 +10,19 @@ class PageController extends Controller
         return view('pages.welcome');
     }
     public function aboutPage() {
-        return view('pages.about');
+        $title = "Get to Know Us - Spotlight";
+        return view('pages.about', compact('title'));
     }
     public function categoriesPage() {
-        return view('pages.categories');
+        $title = "Browse our categories - Spotlight";
+        return view('pages.categories', compact('title'));
     }
     public function libraryPage() {
         $title = "Our Vast Library - Spotlight";
         return view('pages.library', compact('title'));
     }
     public function contactPage() {
-        return view('pages.contact');
+        $title = "Get in touch with us - Spotlight";
+        return view('pages.contact', compact('title'));
     }
 }
