@@ -26,10 +26,8 @@
             @yield('content')
         </main>
 
-        
-    </div>
-    <div>
-        @yield('aboutus')
+
+        @include('partials.footer')
     </div>
 </body>
 </html>
