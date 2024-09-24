@@ -29,3 +29,21 @@
 
 
 /* Contact */
+ .category {
+  border-radius: 13px;
+  box-shadow: 0 4px 8px rgba();
+  transition: transform 0.3s;
+}
+
+ .category:hover {
+  transform: scale(1.03);
+ 
+}
+
+@media screen and (min-width: 375px) {
+   img {
+      width: 0;
+   }
+}
+
+  
