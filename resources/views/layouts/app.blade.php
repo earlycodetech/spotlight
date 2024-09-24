@@ -25,6 +25,11 @@
         <main class="">
             @yield('content')
         </main>
+
+        
+    </div>
+    <div>
+        @yield('aboutus')
     </div>
 </body>
 </html>
