@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::table('categories', function (Blueprint $table) {
             $table->string('slug')->after('title');
+            $table->mediumText('description')->after('slug');
         });
     }
 
@@ -22,7 +23,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('categories', function (Blueprint $table) {
-            $table->dropColumn(['slug']);
+            $table->dropColumn(['slug', 'description']);
         });
     }
 };
