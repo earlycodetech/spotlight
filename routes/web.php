@@ -16,3 +16,4 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('categories/create', [CategoriesController::class, 'create'])->name('categories.create');
+Route::post('categories/create', [CategoriesController::class, 'store'])->name('categories.store');

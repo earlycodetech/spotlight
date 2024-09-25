@@ -6,14 +6,22 @@
                 <div class="card-body">
                     <h3 class="card-title mb-3">Create Category</h3>
 
-                    <form action="" method="post">
+                    <form action="{{ route('categories.store') }}" method="post">
+                        @csrf
+
                         <div class="mb-3">
                             <label for="" class="form-label">Name</label>
                             <input type="text" name="name" class="form-control">
+                            @error('name')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
                         </div>
                         <div class="mb-3">
                             <label for="" class="form-label">Description</label>
                             <textarea name="description" class="form-control" rows="5"></textarea>
+                            @error('description')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
                         </div>
 
                         <div class="mb-3">
