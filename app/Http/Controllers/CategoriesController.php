@@ -36,4 +36,12 @@ class CategoriesController extends Controller
         // return redirect()->route('categories.create');
         return back();
     }
+
+    public function index()
+    {
+        $title = "All Categories - Spotlight";
+        $categories = Category::all();
+       
+        return view('categories.index', compact('title', 'categories'));
+    }
 }
