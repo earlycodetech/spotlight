@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BookController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
@@ -24,3 +25,6 @@ Route::get('categories/{id}/edit', [CategoriesController::class, 'edit'])->name(
 Route::patch('categories/{id}/edit', [CategoriesController::class, 'update'])->name('categories.update');
 
 Route::delete('categories/{id}/delete', [CategoriesController::class, 'destroy'])->name('categories.destroy');
+
+
+Route::resource('books', BookController::class);
