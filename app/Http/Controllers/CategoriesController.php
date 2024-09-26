@@ -9,6 +9,12 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class CategoriesController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware(['auth', 'is.admin']);
+    }
+
     public function create()
     {
 
@@ -18,7 +24,7 @@ class CategoriesController extends Controller
     public function  store(Request $request)
     {
         $data = $request->validate([
-            'name' => "required|string|max:100|unique:categories,name",
+            'name' => "required|string|max:100|unique:categories,title",
             'description' => ['required', 'string', 'max:1000']
         ]);
 
@@ -40,8 +46,43 @@ class CategoriesController extends Controller
     public function index()
     {
         $title = "All Categories - Spotlight";
-        $categories = Category::all();
-       
+        // $categories = Category::all()->sortByDesc('title');
+        $categories = Category::all()->sortBy('title');
+
         return view('categories.index', compact('title', 'categories'));
+    }
+
+    public function edit($id)
+    {
+        // $category = Category::find($id);
+        $category = Category::findOrFail($id);
+
+        return view('categories.edit', compact('category'));
+    }
+
+
+    public function update(Request $request, $id)
+    {
+        $category = Category::findOrFail($id);
+
+        $data = $request->validate([
+            'name' => "required|string|max:100|unique:categories,title,{$id}",
+            'description' => ['required', 'string', 'max:1000']
+        ]);
+
+        Category::where('id', '=', $id)->update([
+            'title' => $data['name'],
+            'description' => $data['description']
+        ]);
+
+        Alert::success('Updated Successfully', 'Your category has been updated');
+        return back();
+    }
+
+    public function destroy($id)
+    {
+        Category::whereId($id)->delete();
+        Alert::toast('Deleted Successfully', 'success');
+        return back();
     }
 }

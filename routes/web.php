@@ -17,4 +17,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('categories/create', [CategoriesController::class, 'create'])->name('categories.create');
 Route::post('categories/create', [CategoriesController::class, 'store'])->name('categories.store');
+
 Route::get('all-categories', [CategoriesController::class, 'index'])->name('categories.index');
+
+Route::get('categories/{id}/edit', [CategoriesController::class, 'edit'])->name('categories.edit');
+Route::patch('categories/{id}/edit', [CategoriesController::class, 'update'])->name('categories.update');
+
+Route::delete('categories/{id}/delete', [CategoriesController::class, 'destroy'])->name('categories.destroy');

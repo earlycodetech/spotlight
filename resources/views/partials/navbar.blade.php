@@ -1,4 +1,5 @@
-<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm mb-5 mt-3" style="max-width: 90%; margin: 0 auto; border-radius:20px;  ">
+<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm mb-5 mt-3"
+    style="max-width: 90%; margin: 0 auto; border-radius:20px;  ">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
             <img src="{{ asset('logo.png') }}" width="40" alt="">
@@ -22,17 +23,20 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('categories.page') }}" class="nav-link {{ request()->is('categories') ? 'active' : '' }}">
+                    <a href="{{ route('categories.page') }}"
+                        class="nav-link {{ request()->is('categories') ? 'active' : '' }}">
                         Categories
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('library.page') }}" class="nav-link {{ request()->is('library') ? 'active' : '' }}">
+                    <a href="{{ route('library.page') }}"
+                        class="nav-link {{ request()->is('library') ? 'active' : '' }}">
                         Library
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('contact.page') }}" class="nav-link {{ request()->is('contact') ? 'active' : '' }}">
+                    <a href="{{ route('contact.page') }}"
+                        class="nav-link {{ request()->is('contact') ? 'active' : '' }}">
                         Contact
                     </a>
                 </li>
@@ -61,6 +65,11 @@
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+
+                            @if (Auth::user()->role == 'admin')
+                                <a href="{{ route('categories.index') }}" class="dropdown-item">Category</a>
+                            @endif
+                            
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">
