@@ -27,4 +27,4 @@ Route::patch('categories/{id}/edit', [CategoriesController::class, 'update'])->n
 Route::delete('categories/{id}/delete', [CategoriesController::class, 'destroy'])->name('categories.destroy');
 
 
-Route::resource('books', BookController::class);
+Route::resource('books', BookController::class)->middleware(['auth', 'is.admin']);
