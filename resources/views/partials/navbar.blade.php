@@ -68,6 +68,9 @@
 
                             @if (Auth::user()->role == 'admin')
                                 <a href="{{ route('categories.index') }}" class="dropdown-item">Category</a>
+                                <a href="{{ route('books.create') }}" class="dropdown-item">
+                                    Upload book
+                                </a>
                             @endif
                             
                             <a class="dropdown-item" href="{{ route('logout') }}"
