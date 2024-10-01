@@ -15,7 +15,10 @@ class BookController extends Controller
      */
     public function index()
     {
-        //
+        $title = "ALl Boooks";
+        $books = Book::latest()->paginate(10);
+
+        return view('books.index', compact('title', 'books'));
     }
 
     /**
