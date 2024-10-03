@@ -17,14 +17,14 @@
 
                         <div class="mb-3">
                             <label for="" class="form-label">Title</label>
-                            <input type="text" name="title" class="form-control">
+                            <input type="text" name="title" value="{{ old('title') }}" class="form-control">
                             @error('title')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="mb-3">
                             <label for="" class="form-label">Author</label>
-                            <input type="text" name="author" class="form-control">
+                            <input type="text" name="author" value="{{ old('author') }}" class="form-control">
                             @error('author')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
@@ -58,7 +58,7 @@
 
                         <div class="mb-3">
                             <label for="" class="form-label">Description</label>
-                            <textarea name="description" class="form-control" rows="5"></textarea>
+                            <textarea name="description" class="form-control" rows="5">{{ old('description') }}</textarea>
                             @error('description')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror

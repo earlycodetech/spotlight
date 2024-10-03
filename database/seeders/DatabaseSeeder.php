@@ -22,7 +22,8 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        $this->call(BookSeeder::class);
-       
+        // $this->call(BookSeeder::class);
+       Book::factory(10)->create();
+        // Book::where('id', '>', 1)->delete();
     }
 }
