@@ -53,9 +53,13 @@
 
                         <div class="row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary w-100">
                                     {{ __('Login') }}
                                 </button>
+
+                                <a href="{{ route('github.login') }}" class="btn btn-dark btn-lg w-100 mt-3">
+                                    <i class="fa-brands fa-github"></i> Sign In With GitHub
+                                </a>
 
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">

@@ -25,7 +25,10 @@
                                 </p>
 
                                 <div>
-                                    <a href="" class="btn btn-warning">
+                                    {{-- <a href="{{ asset('uploads/books/' . $book->file) }}" target="_blank" download="{{ $book->title }}" class="btn btn-warning">
+                                        <i class="fa-solid fa-file-pdf"></i> Download
+                                    </a> --}}
+                                    <a href="{{ route('download.book', ['sku' => $book->sku]) }}" class="btn btn-warning">
                                         <i class="fa-solid fa-file-pdf"></i> Download
                                     </a>
                                 </div>

@@ -3,6 +3,7 @@
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\SocialiteController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -30,3 +31,11 @@ Route::delete('categories/{id}/delete', [CategoriesController::class, 'destroy']
 
 
 Route::resource('books', BookController::class)->middleware(['auth', 'is.admin'])->except('show');
+
+
+Route::get('download/{sku}', [PageController::class, 'download'])->name('download.book');
+
+
+// Socialite
+Route::get('auth/github', [SocialiteController::class, 'redirectTo'])->name('github.login');
+Route::get('auth/github/callback', [SocialiteController::class, 'callback'])->name('github.callback');
