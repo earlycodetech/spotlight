@@ -10,7 +10,8 @@ class PageController extends Controller
 {
     public function homePage()
     {
-        return view('pages.welcome');
+        $newArrivals  = Book::latest()->take(4)->get();
+        return view('pages.welcome', compact('newArrivals'));
     }
     public function aboutPage()
     {
@@ -76,5 +77,18 @@ class PageController extends Controller
   
 
         return response()->download($path, $book->title .'.' .$ext);
+    }
+
+
+    public function sendMessage(Request $request)
+    {
+        $data = $request->validate([
+            'name' => "required|string",
+            'email' => "required|string|email",
+            'phone' => "required|string",
+            'message' => "required|string",
+        ]);
+
+        
     }
 }

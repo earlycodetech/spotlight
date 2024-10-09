@@ -12,6 +12,7 @@ Route::get('about', [PageController::class, 'aboutPage'])->name('about.page');
 Route::get('categories', [PageController::class, 'categoriesPage'])->name('categories.page');
 Route::get('library', [PageController::class, 'libraryPage'])->name('library.page');
 Route::get('contact', [PageController::class, 'contactPage'])->name('contact.page');
+Route::post('contact', [PageController::class, 'sendMessage'])->name('contact.send');
 Route::get('category/{slug}', [PageController::class, 'viewCategory'])->name('category.view.page');
 Route::get('library/{sku}', [PageController::class, 'viewBook'])->name('book.view.page');
 

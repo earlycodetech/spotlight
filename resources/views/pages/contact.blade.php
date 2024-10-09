@@ -26,32 +26,34 @@
             <div class="row contact-section">
                 <!-- Form Column -->
                 <div class="col-md-6">
-                    <form>
+                    <form action="{{ route('contact.send') }}" method="POST">
+                        @csrf
+
                         <!-- Name Input -->
                         <div class="mb-3">
                             <label for="name" class="form-label">Name</label>
-                            <input type="text" class="form-control" id="name" placeholder="Your Name"
+                            <input type="text" name="name" class="form-control" id="name" placeholder="Your Name"
                                 required>
                         </div>
 
                         <!-- Email Input -->
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email" placeholder="Your Email"
+                            <input type="email" name="email" class="form-control" id="email" placeholder="Your Email"
                                 required>
                         </div>
 
                         <!-- Subject Input -->
                         <div class="mb-3">
                             <label for="phone-number" class="form-label">Phone-Number</label>
-                            <input type="tel" class="form-control" id="phone-number"
-                                placeholder="+2347041322082" required>
+                            <input type="tel" name="phone" class="form-control" id="phone-number"
+                                required>
                         </div>
 
                         <!-- Message Input -->
                         <div class="mb-3">
                             <label for="message" class="form-label">Message</label>
-                            <textarea class="form-control" id="message" rows="5" placeholder="Your Message" required></textarea>
+                            <textarea class="form-control" name="message" id="message" rows="5" placeholder="Your Message" required></textarea>
                         </div>
 
                         <!-- Submit Button -->
