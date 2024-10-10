@@ -40,3 +40,5 @@ Route::get('download/{sku}', [PageController::class, 'download'])->name('downloa
 // Socialite
 Route::get('auth/github', [SocialiteController::class, 'redirectTo'])->name('github.login');
 Route::get('auth/github/callback', [SocialiteController::class, 'callback'])->name('github.callback');
+
+Route::get('search', [PageController::class, 'search'])->name('search.page');

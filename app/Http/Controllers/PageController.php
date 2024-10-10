@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ContactMail;
 use App\Models\Book;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class PageController extends Controller
 {
@@ -69,14 +72,14 @@ class PageController extends Controller
      string into an array based on a specified delimiter, in this case, the dot (.) character. */
         $ext = explode(".", $book->file);
 
-        
+
         /* ` = end();` is extracting the last element from the array `` after splitting the
         filename based on the dot (.) delimiter using the `explode()` function. This line of code
         assigns the file extension extracted from the filename to the variable ``. */
         $ext = end($ext);
-  
 
-        return response()->download($path, $book->title .'.' .$ext);
+
+        return response()->download($path, $book->title . '.' . $ext);
     }
 
 
@@ -89,6 +92,27 @@ class PageController extends Controller
             'message' => "required|string",
         ]);
 
-        
+        Mail::to('support@spotlight.ng')->send(new ContactMail($data));
+
+        Alert::success('Mail Sent', "We will get back to you shortly");
+        return back();
+    }
+
+
+    public function search(Request $request)
+    {
+        $search = $request->input('search');
+
+        $books = Book::where('title', 'like', "%$search%")
+            ->orWhere('author', 'like', "%$search%")
+            ->orWhereHas('category', function ($query) use ($search) {
+                $query->where('title', 'like', "%$search%");
+            })
+            ->with(['category'])
+            ->paginate(12);
+
+
+        $title = "Search Result For: " . $search;
+        return view('pages.search', compact('books', 'title'));
     }
 }
