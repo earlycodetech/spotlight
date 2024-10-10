@@ -103,13 +103,19 @@ class PageController extends Controller
     {
         $search = $request->input('search');
 
-        $books = Book::where('title', 'like', "%$search%")
-            ->orWhere('author', 'like', "%$search%")
-            ->orWhereHas('category', function ($query) use ($search) {
-                $query->where('title', 'like', "%$search%");
-            })
-            ->with(['category'])
-            ->paginate(12);
+        if (empty($search)) {
+            Alert::toast('Please Enter a Search keyword', 'warning');
+            return redirect('/');
+        } else {
+
+            $books = Book::where('title', 'like', "%$search%")
+                ->orWhere('author', 'like', "%$search%")
+                ->orWhereHas('category', function ($query) use ($search) {
+                    $query->where('title', 'like', "%$search%");
+                })
+                ->with(['category'])
+                ->paginate(12);
+        }
 
 
         $title = "Search Result For: " . $search;
