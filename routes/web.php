@@ -3,6 +3,7 @@
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\SocialiteController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -11,6 +12,9 @@ Route::get('about', [PageController::class, 'aboutPage'])->name('about.page');
 Route::get('categories', [PageController::class, 'categoriesPage'])->name('categories.page');
 Route::get('library', [PageController::class, 'libraryPage'])->name('library.page');
 Route::get('contact', [PageController::class, 'contactPage'])->name('contact.page');
+Route::post('contact', [PageController::class, 'sendMessage'])->name('contact.send');
+Route::get('category/{slug}', [PageController::class, 'viewCategory'])->name('category.view.page');
+Route::get('library/{sku}', [PageController::class, 'viewBook'])->name('book.view.page');
 
 Auth::routes();
 
@@ -27,4 +31,13 @@ Route::patch('categories/{id}/edit', [CategoriesController::class, 'update'])->n
 Route::delete('categories/{id}/delete', [CategoriesController::class, 'destroy'])->name('categories.destroy');
 
 
-Route::resource('books', BookController::class)->middleware(['auth', 'is.admin']);
+Route::resource('books', BookController::class)->middleware(['auth', 'is.admin'])->except('show');
+
+
+Route::get('download/{sku}',[PageController::class, 'download'])->name('download.book');
+
+// socialite
+Route::get('auth/github', [SocialiteController::class,'redirectTo'])->name('github.login');
+Route::get('auth/github/callback', [SocialiteController::class,'callback'])->name('github.callback');
+
+Route::get('search', [PageController::class, 'search'])->name('search.page');

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     @include('partials.hero', [
-        'title' => 'Checkout our Library',
+        'title' => $title,
         'height' => '10rem',
     ])
 
@@ -35,7 +35,11 @@
                     </div>
                     @empty
                     <div class="col-12">
-                        <p class="h2 text-danger text-center">Coming soon..</p>
+                        <p class="h1 text-danger text-center">
+                            🔍 <br>
+
+                            No Result Found for "{{ $search }}"
+                        </p>
                     </div>
                 @endforelse
                 <div class="col-12">

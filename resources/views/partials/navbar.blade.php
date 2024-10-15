@@ -86,6 +86,14 @@
                     </li>
                 @endguest
             </ul>
+            <form action=" {{ route('search.page') }}" method="GET">
+                <div class="input-group">
+                    <input type="text" placeholder="Search" name="search" class="form-control">
+                    <button class="btn btn-warning" style="padding: 5px 10px; color:black">
+                        <i class="fa-solid fa-search"></i>
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
 </nav>

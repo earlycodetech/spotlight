@@ -62,6 +62,7 @@ class BookController extends Controller
         $slug = Str::slug($data['title']);
 
         Book::create([
+            'sku'=> Str::random(16),
             'category_id' => $data['category'],
             'title' => $data['title'],
             'slug' => $slug,
