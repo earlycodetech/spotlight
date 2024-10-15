@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 @extends('layouts.app');
 @section('content')
     
+=======
+@extends('layouts.app')
+@section('content')
+>>>>>>> 385a9718e8fa6a553a860fb19627029edf07e905
 <section>
     <div class="container category">
              <!-- Contact Form Section -->
@@ -34,13 +39,21 @@
                     <div class="mb-3">
                         <label for="phone-number" class="form-label">Phone-Number</label>
                         <input type="tel" name="phone" class="form-control" id="phone-number"
+<<<<<<< HEAD
                          required>
+=======
+                            required>
+>>>>>>> 385a9718e8fa6a553a860fb19627029edf07e905
                     </div>
 
                     <!-- Message Input -->
                     <div class="mb-3">
                         <label for="message" class="form-label">Message</label>
+<<<<<<< HEAD
                         <textarea class="form-control"  name="message" id="message" rows="5" placeholder="Your Message" required></textarea>
+=======
+                        <textarea class="form-control" name="message" id="message" rows="5" placeholder="Your Message" required></textarea>
+>>>>>>> 385a9718e8fa6a553a860fb19627029edf07e905
                     </div>
 
                     <!-- Submit Button -->

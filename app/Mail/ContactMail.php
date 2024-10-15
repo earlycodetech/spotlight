@@ -41,7 +41,11 @@ class ContactMail extends Mailable
         return new Content(
             markdown: 'mail.contact-mail',
             with: [
+<<<<<<< HEAD
                 'data'=> $this->mailData
+=======
+                'data' => $this->mailData
+>>>>>>> 385a9718e8fa6a553a860fb19627029edf07e905
             ]
         );
     }

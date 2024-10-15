@@ -10,7 +10,7 @@
             <div class="row">
                 @forelse ($books as $book)
                     <div class="col-md-4 col-lg-3 mb-5">
-                        <a href="{{ route('books.edit', $book->id) }}" class="card border nav-link h-100 rounded-0 book">
+                        <a href="{{ route('books.edit', $book->sku) }}" class="card border nav-link h-100 rounded-0 book">
                             <div class="box">
                                 <img src="{{ asset('uploads/covers/' . $book->cover) }}" class="" alt="cover">
                             </div>

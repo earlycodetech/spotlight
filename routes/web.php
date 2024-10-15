@@ -34,10 +34,19 @@ Route::delete('categories/{id}/delete', [CategoriesController::class, 'destroy']
 Route::resource('books', BookController::class)->middleware(['auth', 'is.admin'])->except('show');
 
 
+<<<<<<< HEAD
 Route::get('download/{sku}',[PageController::class, 'download'])->name('download.book');
 
 // socialite
 Route::get('auth/github', [SocialiteController::class,'redirectTo'])->name('github.login');
 Route::get('auth/github/callback', [SocialiteController::class,'callback'])->name('github.callback');
+=======
+Route::get('download/{sku}', [PageController::class, 'download'])->name('download.book');
+
+
+// Socialite
+Route::get('auth/github', [SocialiteController::class, 'redirectTo'])->name('github.login');
+Route::get('auth/github/callback', [SocialiteController::class, 'callback'])->name('github.callback');
+>>>>>>> 385a9718e8fa6a553a860fb19627029edf07e905
 
 Route::get('search', [PageController::class, 'search'])->name('search.page');

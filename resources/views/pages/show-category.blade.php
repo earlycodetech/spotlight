@@ -12,7 +12,11 @@
                     <div class="col-md-4 col-lg-3 mb-5">
                         <a href="{{ route('book.view.page', $book->sku) }}" class="card border nav-link h-100 rounded-0 book">
                             <div class="box">
+<<<<<<< HEAD
                             <img src="{{ asset('uploads/covers/' . $book->cover) }}" class="" alt="cover">
+=======
+                                <img src="{{ asset('uploads/covers/' . $book->cover) }}" class="" alt="cover">
+>>>>>>> 385a9718e8fa6a553a860fb19627029edf07e905
                             </div>
                             <div class="mt-2 card-body">
                                 <div class="row mb-2">
@@ -39,9 +43,16 @@
                         </a>
                     </div>
                 @empty
+<<<<<<< HEAD
                     <p class="h3 text-center fw-semibold">No {{ $category->title }} Book is Available</p>
                 @endforelse
 
+=======
+                    <p class="h3 text-center fw-semibold">No {{ $category->title }} Book is Available. </p>
+                @endforelse
+
+
+>>>>>>> 385a9718e8fa6a553a860fb19627029edf07e905
                 <div class="col-12 my-5">
                     {!! $books->links('pagination::bootstrap-5') !!}
                 </div>

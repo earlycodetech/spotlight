@@ -5,6 +5,7 @@
             <div class="card mx-auto bg-white" style="max-width: 600px;">
                 <div class="card-body">
                     <h3 class="card-title mb-3"> 
+<<<<<<< HEAD
                         Update: {{$book->title}}    
                     </h3>
 
@@ -14,16 +15,34 @@
                         </a>
 
                         <form action="{{ route('books.destroy', $book->sku) }}" method="post" onsubmit="return confirm('Are you sure?')">
+=======
+                        Update: {{ $book->title }}    
+                    </h3>
+
+                    <div class="d-flex justify-content-end align-items-center gap-3 mb-4">
+                        <a href="{{ route('books.index') }}" class="btn btn-primary">
+                            All Books
+                        </a>
+
+                        <form action="{{ route('books.destroy', $book->id) }}" onsubmit="return confirm('Are you sure?')" method="post">
+>>>>>>> 385a9718e8fa6a553a860fb19627029edf07e905
                             @csrf @method('DELETE')
                             <button class="btn btn-danger">
                                 Delete
                             </button>
                         </form>
                     </div>
+<<<<<<< HEAD
                         
                     <form enctype="multipart/form-data" action="{{ route('books.update', $book->sku) }}" method="post">
                         @csrf
                         @method('PUT') 
+=======
+
+                    <form enctype="multipart/form-data" action="{{ route('books.update', $book->sku) }}" method="post">
+                        @csrf
+                        @method('PUT')
+>>>>>>> 385a9718e8fa6a553a860fb19627029edf07e905
 
                         <div class="mb-3">
                             <label for="" class="form-label">Title</label>

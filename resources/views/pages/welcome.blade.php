@@ -2,16 +2,16 @@
 @section('content')
     @include('partials.hero', [
         'title' => 'Welcome To our E-library',
-        'height' => "10rem"
+        'height' => '10rem',
     ])
 
-      <!-- Meet Up starts -->
-      <section class="container mb-5 mt-5 color">
+    <!-- Meet Up starts -->
+    <section class="container mb-5 mt-5 color">
         <div class="row  mx-auto ">
             <div class="col-md-6 mb-5">
-                <img src="{{ asset("images/img-1.jpg") }}" class="order-1 order-md-0 w-100" alt=""> 
+                <img src="{{ asset('images/img-1.jpg') }}" class="order-1 order-md-0 w-100" alt="">
             </div>
-            <div class="col-md-6 order-1 order-md-0 text-center meet-div " >
+            <div class="col-md-6 order-1 order-md-0 text-center meet-div ">
                 <h2 class="w-50 pri">Spotlight MEETUP.</h2>
                 <div class="text-start  ">
                     <p class="Meet_p">Meet Kindred Book Lovers In A Local Meetup Book Club!.
@@ -48,6 +48,7 @@
         <div class="library_container container mt-5">
             <div class="books">
                 <div class="row">
+<<<<<<< HEAD
                     @forelse($newArrivals as $book)
                     <div class="col-md-4 col-lg-3 mb-5">
                         <a href="{{ route('book.view.page', $book->sku) }}" class="card border nav-link h-100 rounded-0 book">
@@ -78,11 +79,37 @@
                         <p class="h2 text-danger text-center">Coming soon..</p>
                     </div>
                 @endforelse
+=======
+                    @forelse ($newArrivals as $book)
+                        <div class="col-md-4 col-lg-3 mb-5">
+                            <a href="{{ route('book.view.page', ['sku' => $book->sku]) }}"
+                                class="card border nav-link h-100 rounded-0 book">
+                                <div class="box">
+                                    <img src="{{ asset('uploads/covers/' . $book->cover) }}" class="" alt="cover">
+                                </div>
+                                <div class="mt-2 card-body">
+                                    <div class="row mb-2">
+                                        <span class="col-1 fa-solid fa-book text-warning"></span>
+                                        <span class="col-10">
+                                            {{ $book->title }}
+                                        </span>
+                                    </div>
+                                    <div class="row mb-2">
+                                        <span class="col-1 fa-solid fa-user-edit text-warning"></span>
+                                        <span class="col-10">
+                                            {{ $book->author }}
+                                        </span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    @empty
+                        <h5>Coming Soon..</h5>
+                    @endforelse
+>>>>>>> 385a9718e8fa6a553a860fb19627029edf07e905
                 </div>
             </div>
         </div>
     </div>
     {{-- New Arrivals Ends --}}
-    
-    
 @endsection
