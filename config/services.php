@@ -34,16 +34,11 @@ return [
             'channel' => env('SLACK_BOT_USER_DEFAULT_CHANNEL'),
         ],
     ],
+
     'github' => [
-<<<<<<< HEAD
-    'client_id' => env('GITHUB_CLIENT_ID'),
-    'client_secret' => env('GITHUB_CLIENT_SECRET'),
-    'redirect' => 'http://spotlight.test/auth/github/callback',
-=======
         'client_id' => env('GITHUB_CLIENT_ID'),
         'client_secret' => env('GITHUB_CLIENT_SECRET'),
         'redirect' => 'http://spotlight.test/auth/github/callback',
->>>>>>> 385a9718e8fa6a553a860fb19627029edf07e905
     ],
 
 ];
