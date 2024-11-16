@@ -93,7 +93,9 @@ class BookController extends Controller
         $title = "Edit Book";
         $book = Book::where('sku', $sku)->firstOrFail();
         $categories =  Category::oldest('title')->get();
-
+        $title1 = 'Delete User!';
+        $text = "Are you sure you want to delete?";
+        confirmDelete($title1, $text);
         return view('books.edit', compact('book', 'title', 'categories'));
     }
 

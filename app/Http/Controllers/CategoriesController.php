@@ -47,6 +47,9 @@ class CategoriesController extends Controller
     {
         $title = "All Categories - Spotlight";
         // $categories = Category::all()->sortByDesc('title');
+        $heading = 'Delete Category!';
+        $body = "Are you sure you want to delete?";
+        confirmDelete($heading, $body);
         $categories = Category::all()->sortBy('title');
 
         return view('categories.index', compact('title', 'categories'));
@@ -82,6 +85,7 @@ class CategoriesController extends Controller
     public function destroy($id)
     {
         Category::whereId($id)->delete();
+        
         Alert::toast('Deleted Successfully', 'success');
         return back();
     }

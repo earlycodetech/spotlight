@@ -15,7 +15,7 @@
                                 <img src="{{ asset('uploads/covers/' . $book->cover) }}" class="" alt="cover">
                             </div>
                             <div class="mt-2 card-body">
-                                <div class="row mb-2">
+                                <div class=" mb-2">
                                     <span class="col-1 fa-solid fa-book text-warning"></span>
                                     <span class="col-10">
                                         {{ $book->title }}
@@ -25,6 +25,14 @@
                                     <span class="col-1 fa-solid fa-user-edit text-warning"></span>
                                     <span class="col-10">
                                         {{ $book->author }}
+                                    </span>
+                                    <div class="">
+                                        <span class="col-1 fa-solid fa-calendar-check text-warning"></span>
+                                        {{ $book->created_at->format('M. jS Y') }}
+                                    </div>
+                                    <span class="badge col-6  mt-2 bg-warning">
+                                        {{-- {{ Number::abbreviate($category->books->count()) }}  --}}
+                                        {{ $book->category ? $book->category['title'] : 'No Category ' }}
                                     </span>
                                 </div>
                             </div>

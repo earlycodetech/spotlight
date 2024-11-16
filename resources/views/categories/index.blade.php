@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div class="container">
-        <h1 class="page-title">Books Categories</h1>
+        <h1 class="page-title">Books     Categories</h1>
 
         <!-- Categories list in card layout -->
         <a href="{{ route('categories.create') }}" class="btn btn-primary">
@@ -25,14 +25,8 @@
                                 <i class="fa-solid fa-edit"></i>
                             </a>
 
-                            <form action="{{ route('categories.destroy', $category->id) }}" onsubmit="return confirm('Are you sure?')"
-                                method="post">
-                                @csrf
-                                @method('DELETE')
-                                <button class="btn btn-danger btn-sm">
-                                    <i class="fa-solid fa-trash-alt"></i>
-                                </button>
-                            </form>
+                            <a href="{{ route('categories.destroy', $category->id) }}" class="btn btn-danger" data-confirm-delete="true"><i class="fa-solid fa-trash-can"></i></a>
+
                         </div>
 
                     </div>

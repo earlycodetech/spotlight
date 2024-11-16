@@ -3,18 +3,35 @@
 namespace App\Http\Controllers;
 
 use App\Mail\ContactMail;
+use App\Models\Advert;
 use App\Models\Book;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use RealRashid\SweetAlert\Facades\Alert;
+use Symfony\Component\Mailer\Exception\TransportException;
+
+use function Pest\Laravel\get;
 
 class PageController extends Controller
 {
     public function homePage()
     {
-        $newArrivals  = Book::latest()->take(4)->get();
-        return view('pages.welcome', compact('newArrivals'));
+        $newArrivals = Book::latest()->take(4)->get();
+        $advert=Advert::latest()->take(1)->get();
+        $previousUrl= url()->previous();
+        // dd($previousUrl);
+        if (str_contains($previousUrl, "/login")) {
+            Alert::toast('Logged in  successfully', 'success');
+        }
+        if (str_contains($previousUrl, "/register")) {
+            Alert::toast('Account created successfully', 'success');
+        }
+        if (!Auth::user()) {
+            Alert::toast('You are logged out', 'warning');
+        }
+        return view('pages.welcome', compact('newArrivals','advert'));
     }
     public function aboutPage()
     {
@@ -31,7 +48,9 @@ class PageController extends Controller
     {
         $title = "Our Vast Library - Spotlight";
         $books = Book::latest()->paginate(8);
-        return view('pages.library', compact('title', 'books'));
+        $category=Category::all();
+        
+        return view('pages.library', compact('title', 'books', 'category'));
     }
     public function contactPage()
     {
@@ -48,6 +67,32 @@ class PageController extends Controller
         $title =  $category->title . ' Books - Spotlight';
 
         return view('pages.show-category', compact('category', 'books', 'title'));
+    }
+    public function advertPage()
+    {
+        return view('pages.advert');
+    }
+
+    public function advertCreate(Request $request)
+    {
+        $data = $request->validate([
+            'advertTitle' => 'string|required',
+            'advertDescription' => 'string|required',
+            'advertCover' => 'image|required|mimes:png,jpg,jpeg|max:1024'
+        ]);
+
+        $coverFile = $request->file('advertCover');
+        $coverExt = $coverFile->extension();
+        $coverFileName = 'cover_name_' . time() . '_' . mt_srand() . "." . $coverExt;
+        $coverFile->move('adverts/covers', $coverFileName);
+
+        Advert::create([
+            'advertTitle' => $data['advertTitle'],
+            'advertDescription' => $data['advertDescription'],
+            'advertCover'=>$coverFileName,
+        ]);
+        Alert::toast('Advert set succcessfully', 'success');
+        return back();
     }
 
     public function viewBook($sku)
@@ -85,18 +130,31 @@ class PageController extends Controller
 
     public function sendMessage(Request $request)
     {
+        // Validate incoming data
         $data = $request->validate([
             'name' => "required|string",
             'email' => "required|string|email",
             'phone' => "required|string",
             'message' => "required|string",
         ]);
-
-        Mail::to('support@spotlight.ng')->send(new ContactMail($data));
-
-        Alert::success('Mail Sent', "We will get back to you shortly");
+    
+        try {
+            // Attempt to send the email
+            Mail::to('ochigbogodswill868@gmail.com')->send(new ContactMail($data));
+            Alert::toast( "We will get back to you shortly",'success');
+        
+        } catch (TransportException $e) {
+            // \Log::error('Mail Error: ' . $e->getMessage());
+            Alert::toast( "Failed to send your message. Please try again later.",'error');
+        
+        } catch (\Exception $e) {
+            // \Log::error('General Mail Error: ' . $e->getMessage());
+            Alert::error('Error', "An unexpected error occurred. Please try again later.");
+        }
+        
         return back();
     }
+    
 
 
     public function search(Request $request)

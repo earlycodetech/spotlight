@@ -13,12 +13,8 @@
                             All Books
                         </a>
 
-                        <form action="{{ route('books.destroy', $book->id) }}" onsubmit="return confirm('Are you sure?')" method="post">
-                            @csrf @method('DELETE')
-                            <button class="btn btn-danger">
-                                Delete
-                            </button>
-                        </form>
+                        <a href="{{ route('books.destroy', $book->id) }}" class="btn btn-danger" data-confirm-delete="true">Delete</a>
+                        
                     </div>
 
                     <form enctype="multipart/form-data" action="{{ route('books.update', $book->sku) }}" method="post">

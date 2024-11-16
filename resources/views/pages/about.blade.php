@@ -1,34 +1,43 @@
 @extends('layouts.app')
 @section('content')
-    <div class="section">
-        <div class="container">
-            <div class="content-section">
-                <div class="title">
-                    <h1>
-                        About Spotlight
-                    </h1>
-                </div>
-                <div class="content">
-                    
-                    <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci debitis modi recusandae magni repellat rem aliquid nobis. Laborum, asperiores autem.</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia commodi, nostrum vitae quidem porro autem accusantium molestias quis quas nulla, nisi amet iure perspiciatis rem adipisci expedita animi saepe deleniti, unde numquam minus ut reiciendis aliquam! Facilis dignissimos, repudiandae neque omnis deserunt esse, repellat incidunt doloribus dolor quas tempora numquam.
-    
-                    </p>
-                    <div class="button">
-                        <a href="">Read More</a>
-                    </div>
-                </div>
-                <div class="socials">
-                    <a href=""><i class="fab fa-facebook"></i></a>
-                    <a href=""><i class="fab fa-twitter"></i></a>
-                    <a href=""><i class="fab fa-instagram"></i></a>
-                    <a href=""><i class="fab fa-whatsapp"></i></a>
-                </div>
-    
+
+    <!-- About section start -->
+    <section class="container mt-5 mb-5">
+        <h1 class="text-center pri mb-4">About Us</h1>
+        <div class="row">
+            <div class="col-md-6">
+                <img src=" {{ asset('images/book-shelf.jpg') }}" class="img-fluid rounded" alt="About Us Image">
             </div>
-            <div class="image-section">
-                <img src="{{ asset('images/img-3.jpg')  }}" alt="">
+            <div class="col-md-6">
+                <h2 class="pri">Our Mission</h2>
+                <p class="text-muted">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam quaerat magni nihil officiis earum, deleniti iste ex veniam. Unde autem aperiam architecto voluptates nobis fuga sunt, magni in quod laudantium nulla adipisci distinctio perspiciatis maxime totam obcaecati laboriosam. Ratione dolores vitae voluptates nobis totam debitis adipisci laboriosam reprehenderit! Iusto, distinctio! Voluptatum mollitia quidem, in nihil optio est eligendi fugiat illo?</p>
+                <h2 class="pri">Our Story</h2>
+                <p class="text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt reiciendis ipsum modi, dolorum enim excepturi est dolorem corporis aut temporibus. Soluta neque culpa sit sunt, aperiam aspernatur suscipit quam dolor? Optio, pariatur ea. Sunt similique, ipsum saepe ab placeat nemo adipisci. Sed perspiciatis dignissimos exercitationem iure animi impedit odit, labore doloremque vitae eius voluptas minima ipsum eos, quos, est odio.</p>
+                <h2 class="pri">Our Values</h2>
+                <ul class="text-muted">
+                    <li>Inclusivity: Lorem, ipsum dolor sit amet consectetur adipisicing elit.</li>
+                    <li>Quality: Lorem ipsum dolor sit amet consectetur.</li>
+                    <li>Community: Lorem ipsum dolor sit amet, consectetur adipisicing elit. </li>
+                    <li>Innovation: Lorem ipsum dolor sit, amet consectetur adipisicing elit. Necessitatibus.</li>
+                </ul>
             </div>
         </div>
-    </div>
+    </section>
+    <!-- About section end -->
+
+    <!-- founder starts -->
+     <section class="container">
+        <div class="">
+            <h2 class="text-center pri">Our Founder</h3>
+            <div class="row bg-light shadow ">
+                <div class=" col-6 p-5">
+                    <h4>Dr. Christain Gabriel</h4>
+                   <p> estias nesciunt quo? Officia neque harum omn aliquam aperiam voluptatem eligendi quibusdam quo a laborum, blanditiis aliquid dolores et minus consectetur sed maxime, provident dolorem. Ipsa dolore vitae repudiandae labore tempora corrupti ut aspernatur distinctio quis ab.</p> 
+                </div>
+                <img src=" {{ asset('images/main-bg.jpg') }}" class="w-50" style="height: 500px; object-fit:cover;" alt="">
+            </div>
+        </div>
+     </section>
+    <!-- founder ends -->
+
 @endsection

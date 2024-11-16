@@ -5,21 +5,20 @@
         'height' => '10rem',
     ])
 
-    <!-- Meet Up starts -->
-    <section class="container mb-5 mt-5 color">
-        <div class="row  mx-auto ">
-            <div class="col-md-6 mb-5">
-                <img src="{{ asset('images/img-1.jpg') }}" class="order-1 order-md-0 w-100" alt="">
+      <!-- Meet Up starts -->
+      <section class="container mb-5 mt-5 color">
+        @forelse ($advert as $advert)
+        <div class="row  mx-auto" style="height: 450px;">
+            <div class="col-md-6 mb-5 h-100  ">
+                <img src="{{ asset("adverts/covers/".$advert->advertCover) }}" class="order-1 h-100 order-md-0 w-100" alt=""> 
             </div>
-            <div class="col-md-6 order-1 order-md-0 text-center meet-div ">
-                <h2 class="w-50 pri">Spotlight MEETUP.</h2>
+            <div class="col-md-6 order-1 order-md-0 text-center meet-div " >
+                <h2 class="w-50 pri text-start">{{ Str::upper($advert->advertTitle) }}</h2>
                 <div class="text-start  ">
-                    <p class="Meet_p">Meet Kindred Book Lovers In A Local Meetup Book Club!.
-                        Fiction Or Non Fiction ,Paperback Or Hardcover,You Like?
-                        Read A New Book Every Month..</p>
+                    <p class="Meet_p">{{ $advert->advertDescription }}</p>
                 </div>
-                <div class="row d-flex justify-content-evenly meet bgsecn">
-                    <div class="col-md-4 col-4 me-5 me-md-0 text-start">
+                <div class="row   meet bgsecn">
+                    <div class="col-md-4 col-4  me-md-0 text-start">
                         <h4 class="pri">1M+</h4>
                         <p>Books</p>
                         <p>Collections</p>
@@ -34,10 +33,13 @@
                         <p>Groups</p>
                         <p>Created</p>
                     </div>
-                    <button class="w-50 p-2 rounded  border-0 bgsec text-white ms-4 mt-5">Join Now</button>
+                    <button class="w-50 p-2 rounded  border-0 bg-warning text-white ms-4 mt-5">Join Now</button>
                 </div>
             </div>
-        </div>
+        </div>            
+        @empty
+            
+        @endforelse
     </section>
     <!-- Meet Up ends -->
 
@@ -49,7 +51,7 @@
             <div class="books">
                 <div class="row">
                     @forelse ($newArrivals as $book)
-                        <div class="col-md-4 col-lg-3 mb-5">
+                        <div class="col-md-4 col-lg-3  mb-5">
                             <a href="{{ route('book.view.page', ['sku' => $book->sku]) }}"
                                 class="card border nav-link h-100 rounded-0 book">
                                 <div class="box">

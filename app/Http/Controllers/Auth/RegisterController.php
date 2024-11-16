@@ -3,10 +3,14 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Mail\RegisterMail;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Mail;
+use RealRashid\SweetAlert\Facades\Alert;
+use Symfony\Component\Mailer\Exception\TransportException;
 
 class RegisterController extends Controller
 {
@@ -63,10 +67,26 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+    
+        try {
+            // Attempt to send the email
+            Mail::to($user['email'])->send(new RegisterMail($data));
+            Alert::toast("Mail Sent", 'success');
+            
+        } catch (TransportException $e) {
+            // \Log::error('Mail Error: ' . $e->getMessage());
+            Alert::toast( "Failed to send your message. Please try again later.",'error');
+            
+        } catch (\Exception $e) {
+            // \Log::error('General Mail Error: ' . $e->getMessage());
+            Alert::error('Error', "An unexpected error occurred. Please try again later.");
+        }
+        
+        return $user;
     }
 }

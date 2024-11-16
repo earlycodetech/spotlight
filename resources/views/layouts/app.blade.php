@@ -18,7 +18,7 @@
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/css/style.css'])
 </head>
-<body>
+<body >
     <div id="app">
         @include('partials.navbar')
 

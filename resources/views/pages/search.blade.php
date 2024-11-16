@@ -31,7 +31,9 @@
                         </a>
                     </div>
                 @empty
-                    <h5>Coming Soon..</h5>
+                    <h5 class="h2 text-center text-danger">
+                        🔎<br>
+                        Search Not Found...</h5>
                 @endforelse
 
                 <div class="col-12">

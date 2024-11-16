@@ -23,8 +23,16 @@
                                 </div>
                                 <div class="row mb-2">
                                     <span class="col-1 fa-solid fa-user-edit text-warning"></span>
-                                    <span class="col-10">
+                                    <span class="col-10 mb-2">
                                         {{ $book->author }}
+                                    </span>
+                                    <div class="">
+                                        <span class="col-1 fa-solid fa-calendar-check text-warning"></span>
+                                        {{ $book->created_at->format('M. jS Y') }}
+                                    </div>
+                                    <span class="badge col-10  mt-2 bg-warning">
+                                        {{-- {{ Number::abbreviate($category->books->count()) }}  --}}
+                                        {{ $book->category ? $book->category['title'] : 'No Category ' }}
                                     </span>
                                 </div>
                             </div>

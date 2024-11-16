@@ -2,11 +2,11 @@
 @section('content')
     <section>
         <div class="container my-5">
-            <div class="card border-0 shadow-sm bg-white mx-auto" style="max-width: 900px;">
+            <div class="card border-0 shadow-lg bg-white mx-auto" style="max-width: 900px;">
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-md-4 mb-4">
-                            <img src="{{ asset('uploads/covers/' . $book->cover) }}" class="w-100 rounded-1" alt="{{ $book->title }}">
+                        <div class="col-md-4 mb-4 ">
+                            <img src="{{ asset('uploads/covers/' . $book->cover) }}" class="w-100 h-100 rounded-1" alt="{{ $book->title }}">
                         </div>
 
                         <div class="col-md-8 mb-4">
@@ -21,6 +21,7 @@
                                 </p>
 
                                 <p>
+                                    <i class="fas fa-edit text-warning"></i>
                                     {{ $book->description }}
                                 </p>
 
@@ -28,6 +29,9 @@
                                     {{-- <a href="{{ asset('uploads/books/' . $book->file) }}" target="_blank" download="{{ $book->title }}" class="btn btn-warning">
                                         <i class="fa-solid fa-file-pdf"></i> Download
                                     </a> --}}
+                                    <a href="{{ asset('uploads/books/' . $book->file) }}" target="_blank"  class="btn btn-success">
+                                        <i class="fa-solid fa-book"></i> Read Now
+                                    </a>
                                     <a href="{{ route('download.book', ['sku' => $book->sku]) }}" class="btn btn-warning">
                                         <i class="fa-solid fa-file-pdf"></i> Download
                                     </a>
