@@ -14,7 +14,7 @@ Route::get('library', [PageController::class, 'libraryPage'])->name('library.pag
 Route::get('contact', [PageController::class, 'contactPage'])->name('contact.page');
 Route::post('contact', [PageController::class, 'sendMessage'])->name('contact.send');
 Route::get('category/{slug}', [PageController::class, 'viewCategory'])->name('category.view.page');
-Route::get('library/{sku}', [PageController::class, 'viewBook'])->name('book.view.page');
+Route::get('library/{sku}', [PageController::class, 'viewBook'])->name('book.view.page')->middleware('auth');
 Route::post('advert', [PageController::class, 'advertCreate'])->name('advert.store');
 Route::get('advert', [PageController::class, 'advertPage'])->name('advert.page');
 

@@ -25,6 +25,9 @@ class PageController extends Controller
         if (str_contains($previousUrl, "/login")) {
             Alert::toast('Logged in  successfully', 'success');
         }
+        // if (Auth::user()) {
+        //     Alert::toast('Logged in  successfully', 'success');
+        // }
         if (str_contains($previousUrl, "/register")) {
             Alert::toast('Account created successfully', 'success');
         }

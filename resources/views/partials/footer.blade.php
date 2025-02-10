@@ -38,9 +38,9 @@
       <div class="container col-md-4 col-12 mb-5 ">
           <div class="">
               <img src="{{ asset('logo.png') }}" width="30" alt="logo" class=" d-inline-block">
-              <h3 class=" d-inline-block text-warning">Spot<span class="text-success">Ligth</span> </h3>
+              <h3 class=" d-inline-block text-warning">E-lib<span class="text-success">rary</span> </h3>
           </div>
-          <p>SpotLight Library is an e-library website that
+          <p>e-library website that
               consists of all genres of books from
               around the world </p>
       </div>

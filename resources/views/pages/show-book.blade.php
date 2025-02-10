@@ -5,8 +5,8 @@
             <div class="card border-0 shadow-lg bg-white mx-auto" style="max-width: 900px;">
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-md-4 mb-4 ">
-                            <img src="{{ asset('uploads/covers/' . $book->cover) }}" class="w-100 h-100 rounded-1" alt="{{ $book->title }}">
+                        <div class="col-md-4 mb-4 " style="height:200px">
+                            <img src="{{ asset('uploads/covers/' . $book->cover) }}" class="w-100 h-100 rounded-1 object-cover" alt="{{ $book->title }}">
                         </div>
 
                         <div class="col-md-8 mb-4">

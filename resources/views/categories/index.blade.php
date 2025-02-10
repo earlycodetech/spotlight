@@ -28,7 +28,7 @@
                             <a href="{{ route('categories.destroy', $category->id) }}" class="btn btn-danger" data-confirm-delete="true"><i class="fa-solid fa-trash-can"></i></a>
 
                         </div>
-
+                        
                     </div>
                 </div>
             @empty
